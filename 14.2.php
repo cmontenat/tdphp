@@ -28,14 +28,20 @@ function demander_creneau (string $phrase = 'Veuillez entrez votre créneau'): a
     return [$ouverture, $fermeture];
 
 }
-function demander_creneaux (string $phrase = 'Veuillez entrez vos créneaux'): array{
+function demander_creneaux ($phrase = 'Veuillez entrez vos créneaux'): array{
     $creneaux = [];
     $continuez = true;
-    while ($continuez){
+    while ($resultat){
         $creneaux = demander_creneau();
         $continuez = repondre_oui_non('Voulez vous continuez ?');
     }
     return $creneaux;
 } 
-demander_creneaux();
-var_dump($creneaux);
+$creneau = demander_creneau();
+$resultat = repondre_oui_non('Voulez vous continuez ?');
+if ($resultat == 'o'){
+    $creneau = demander_creneau();
+}else{
+    var_dump($creneau);
+}
+var_dump($creneau);
