@@ -11,7 +11,7 @@ function repondre_oui_non(string $phrase): bool{
         }
     }
 }
-function demander_creneau (string $phrase = 'Veuillez entrez votre créneau'): array{
+function demander_creneau (string $phrase = 'Veuillez entrez votre créneau'){
     echo $phrase.'\n';
     while (true){
         $ouverture = (int)readline("heure d'ouverture");
@@ -28,16 +28,14 @@ function demander_creneau (string $phrase = 'Veuillez entrez votre créneau'): a
     return [$ouverture, $fermeture];
 
 }
-function demander_creneaux($phrase = 'Veuillez entrez vos créneaux'): array{
+function demander_creneaux($phrase = 'Veuillez entrez vos créneaux'){
     $creneaux = [];
     $continuez = true;
     while ($continuez){
         $creneaux = demander_creneau();
+        var_dump($creneaux);
         $continuez = repondre_oui_non('Voulez vous continuez ?');
     }
     return $creneaux;
 } 
 $resultat = demander_creneaux();
-
-
-var_dump($resultat);
